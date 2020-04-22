@@ -38,7 +38,7 @@ type DBConnectionConfig struct {
 	Host string `json:"host"`
 }
 
-func (s *SecretsConfig) GetSecret() DBConnectionConfig {
+func (s *SecretsConfig) GenerateDBConnectionFromSecret() DBConnectionConfig {
 
 	if s.Region == "" || s.SecretName == "" {
 		err := errors.New(BadCredentialRequestError)
