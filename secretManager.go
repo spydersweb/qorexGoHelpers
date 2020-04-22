@@ -24,6 +24,8 @@ const (
 	ErrorUnknown = "An unknown error occurred"
 )
 
+
+
 // SecretsConfig is used to set up the connection
 type SecretsConfig struct {
 	SecretName string // Instance name to pass in
@@ -37,7 +39,7 @@ type DBConnectionConfig struct {
 	Host string `json:"host"`
 }
 
-func (s *SecretsConfig) GetSecret() {
+func (s *SecretsConfig) GetSecret() DBConnectionConfig {
 
 	if s.Region == "" || s.SecretName == "" {
 		err := errors.New(BadCredentialRequestError)
@@ -133,4 +135,5 @@ func (s *SecretsConfig) GetSecret() {
 			err)
 	}
 
+	return dbConn
 }
